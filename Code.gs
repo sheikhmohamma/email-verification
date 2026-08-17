@@ -21,7 +21,7 @@ const SHEET_NAME = "Users";
 //    button link, and for the verify/resend pages). Fill this in
 //    AFTER your first deployment, then redeploy.
 // ------------------------------------------------------------
-const VERIFY_PAGE_URL = "https://sheikhmohamma.github.io/email-verification/";
+const VERIFY_PAGE_URL = "https://sheikhmohamma.github.io/email-verification/verify.html";
 
 // How long a verification link stays valid, in minutes.
 const TOKEN_EXPIRY_MINUTES = 30;
