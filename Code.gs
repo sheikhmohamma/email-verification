@@ -20,7 +20,7 @@ const SPREADSHEET_ID =
 const SHEET_NAME = "Users";
 
 const VERIFY_PAGE_URL =
-  "https://sheikhmohamma.github.io/email-verification/verify.html";
+  "https://script.google.com/macros/s/AKfycbyaZwGzzsPV1QTzX2hJz83F4tgRxPZ1pPs_vxdTJn4YJZ1ffb8CW1qwZX1rN-aAzsITbw/exec";
 
 const TOKEN_EXPIRY_MINUTES = 30;
 
