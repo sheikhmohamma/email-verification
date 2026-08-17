@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Create Your Account</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="bg-orbs">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+
+  <main class="page">
+    <section class="card" id="registerCard">
+      <div class="card-head">
+        <div class="mark">✦</div>
+        <h1>Create your account</h1>
+        <p class="sub">Join us and get started in seconds</p>
+      </div>
+
+      <form id="registerForm" novalidate>
+
+        <div class="field">
+          <label for="fullName">Full name</label>
+          <div class="input-wrap">
+            <span class="icon">👤</span>
+            <input type="text" id="fullName" name="fullName" placeholder="Jane Doe" autocomplete="name" />
+          </div>
+          <span class="error" id="err-fullName"></span>
+        </div>
+
+        <div class="field">
+          <label for="email">Email address</label>
+          <div class="input-wrap">
+            <span class="icon">✉️</span>
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" />
+          </div>
+          <span class="error" id="err-email"></span>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="input-wrap">
+            <span class="icon">🔒</span>
+            <input type="password" id="password" name="password" placeholder="At least 6 characters" autocomplete="new-password" />
+            <button type="button" class="toggle-vis" data-target="password" aria-label="Show password">👁</button>
+          </div>
+          <span class="error" id="err-password"></span>
+        </div>
+
+        <div class="field">
+          <label for="confirmPassword">Confirm password</label>
+          <div class="input-wrap">
+            <span class="icon">🔒</span>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" autocomplete="new-password" />
+            <button type="button" class="toggle-vis" data-target="confirmPassword" aria-label="Show password">👁</button>
+          </div>
+          <span class="error" id="err-confirmPassword"></span>
+        </div>
+
+        <button type="submit" class="btn-primary" id="submitBtn">
+          <span class="btn-label">Create account</span>
+          <span class="btn-spinner" hidden></span>
+        </button>
+
+        <p class="banner" id="formBanner" hidden></p>
+      </form>
+
+      <p class="footnote">Already have an account? <a href="#">Log in</a></p>
+    </section>
+
+    <!-- Post-submit success state -->
+    <section class="card" id="successCard" hidden>
+      <div class="result-icon success">✓</div>
+      <h2>Check your inbox</h2>
+      <p class="sub">
+        We've sent a verification link to <strong id="sentToEmail">your email</strong>.
+        Click it to activate your account. The link expires in 30 minutes.
+      </p>
+      <a href="resend.html" class="btn-ghost">Didn't get it? Resend email</a>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
