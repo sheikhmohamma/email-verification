@@ -1,102 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Verify your email</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css" />
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Email Verification</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
+
 <body>
 
-  <main class="frame">
+<div class="page-bg"></div>
 
-    <section class="panel-brand">
-      <div class="panel-inner">
-        <span class="eyebrow">MEMBER REGISTRY</span>
-        <h1 class="headline">One click<br/>to make it<br/>official.</h1>
-        <p class="tagline">Every registration gets a stamp of approval once the link in your inbox is confirmed.</p>
+<main class="auth-container">
 
-        <div class="stamp" aria-hidden="true">
-          <svg viewBox="0 0 160 160" width="128" height="128">
-            <circle cx="80" cy="80" r="72" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 5"/>
-            <circle cx="80" cy="80" r="60" fill="none" stroke="currentColor" stroke-width="1.5"/>
-            <path id="stampCircleTop2" fill="none" d="M 80,20 A 60,60 0 0 1 140,80"/>
-            <path id="stampCircleBot2" fill="none" d="M 20,80 A 60,60 0 0 1 80,140"/>
-            <text font-family="IBM Plex Mono" font-size="10.5" letter-spacing="3" fill="currentColor">
-              <textPath href="#stampCircleTop2" startOffset="2">VERIFIED · SECURE</textPath>
-            </text>
-            <text font-family="IBM Plex Mono" font-size="10.5" letter-spacing="3" fill="currentColor">
-              <textPath href="#stampCircleBot2" startOffset="2">EST. TODAY</textPath>
-            </text>
-            <path d="M55 82 L72 98 L106 60" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-      </div>
-    </section>
 
-    <section class="panel-form">
+<!-- BRAND -->
 
-      <!-- Checking token -->
-      <div class="stub result-stub" id="checkingCard">
-        <div class="stub-notch stub-notch-top"></div>
-        <div class="spinner-lg"></div>
-        <h2>Verifying your email...</h2>
-        <p>Hang tight, this only takes a second.</p>
-      </div>
+<section class="brand-panel">
 
-      <!-- Success -->
-      <div class="stub result-stub" id="verifiedCard" hidden>
-        <div class="stub-notch stub-notch-top"></div>
-        <div class="result-stamp success">
-          <svg viewBox="0 0 52 52" width="36" height="36">
-            <circle class="check-circle" cx="26" cy="26" r="23" fill="none"/>
-            <path class="check-mark" fill="none" d="M14 27 L22 35 L38 17"/>
-          </svg>
-        </div>
-        <h2>Email verified!</h2>
-        <p>Your email has been successfully verified. You can now continue to the website.</p>
-        <a href="index.html" class="btn-ghost">Continue</a>
-      </div>
+<div class="brand-content">
 
-      <!-- Invalid / expired -->
-      <div class="stub result-stub" id="invalidCard" hidden>
-        <div class="stub-notch stub-notch-top"></div>
-        <div class="result-stamp error">!</div>
-        <h2>Oops!</h2>
-        <p>This verification link is invalid or has expired. Please request a new verification email.</p>
-        <button type="button" class="btn-ghost" id="showResendBtn" style="border:1.5px solid var(--forest); background:transparent; cursor:pointer;">Resend email</button>
-      </div>
+<div class="brand-logo">
+<span>✓</span>
+</div>
 
-      <!-- Resend form -->
-      <div class="stub" id="resendCard" hidden>
-        <div class="stub-notch stub-notch-top"></div>
-        <div class="stub-head">
-          <span class="eyebrow small">RESEND LINK</span>
-          <h2>Resend verification</h2>
-          <p class="sub">Enter your email and we'll send a new link</p>
-        </div>
+<div class="eyebrow">
+EMAIL VERIFICATION
+</div>
 
-        <form id="resendForm" novalidate>
-          <div class="field">
-            <label for="resendEmail">Email address</label>
-            <input type="email" id="resendEmail" name="resendEmail" placeholder="you@example.com" autocomplete="email" />
-            <span class="error" id="err-resendEmail"></span>
-          </div>
+<h1>
+Make it
+<br>
+<span>official.</span>
+</h1>
 
-          <button type="submit" class="btn-primary" id="resendBtn">
-            <span class="btn-label">Resend verification email</span>
-            <span class="btn-spinner" hidden></span>
-          </button>
+<p class="brand-description">
+One simple click confirms your email address and activates your account.
+</p>
 
-          <p class="banner" id="resendBanner" hidden></p>
-        </form>
-      </div>
 
-    </section>
-  </main>
+<div class="feature-list">
 
-  <script src="verify.js"></script>
+<div class="feature">
+
+<div class="feature-icon">
+✓
+</div>
+
+<div>
+<strong>Secure verification</strong>
+<p>Your email confirms your identity.</p>
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+🔒
+</div>
+
+<div>
+<strong>Protected access</strong>
+<p>Verification helps keep your account safe.</p>
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+⚡
+</div>
+
+<div>
+<strong>Almost there</strong>
+<p>You're just one step away.</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- RIGHT -->
+
+<section class="form-panel">
+
+
+<!-- CHECKING -->
+
+<div
+class="form-card verify-card"
+id="checkingCard"
+>
+
+<div class="verify-spinner"></div>
+
+<div class="eyebrow">
+PLEASE WAIT
+</div>
+
+<h2>
+Verifying your email
+</h2>
+
+<p>
+We're checking your verification link.
+</p>
+
+</div>
+
+
+<!-- SUCCESS -->
+
+<div
+class="form-card verify-card"
+id="verifiedCard"
+hidden
+>
+
+<div class="success-icon">
+✓
+</div>
+
+<div class="eyebrow">
+VERIFICATION COMPLETE
+</div>
+
+<h2>
+Email verified!
+</h2>
+
+<p>
+Your email address has been successfully verified.
+Your account is now ready.
+</p>
+
+<a
+href="index.html"
+class="btn-primary verify-button"
+>
+Continue
+</a>
+
+</div>
+
+
+<!-- INVALID -->
+
+<div
+class="form-card verify-card"
+id="invalidCard"
+hidden
+>
+
+<div class="error-icon">
+!
+</div>
+
+<div class="eyebrow error-eyebrow">
+VERIFICATION FAILED
+</div>
+
+<h2>
+Link expired
+</h2>
+
+<p>
+This verification link is invalid or has expired.
+Request a new verification email to continue.
+</p>
+
+<button
+type="button"
+class="btn-primary verify-button"
+id="showResendBtn"
+>
+Send new link
+</button>
+
+</div>
+
+
+<!-- RESEND -->
+
+<div
+class="form-card"
+id="resendCard"
+hidden
+>
+
+<div class="mini-logo">
+✉
+</div>
+
+<div class="form-header">
+
+<div class="eyebrow">
+NEW VERIFICATION LINK
+</div>
+
+<h2>
+Resend email
+</h2>
+
+<p>
+Enter your email and we'll send you a fresh verification link.
+</p>
+
+</div>
+
+
+<form
+id="resendForm"
+novalidate
+>
+
+<div class="field">
+
+<label for="resendEmail">
+Email address
+</label>
+
+<div class="input-wrapper">
+
+<span class="input-icon">
+✉
+</span>
+
+<input
+type="email"
+id="resendEmail"
+placeholder="you@example.com"
+autocomplete="email"
+>
+
+</div>
+
+<span
+class="error"
+id="err-resendEmail">
+</span>
+
+</div>
+
+
+<button
+type="submit"
+class="btn-primary"
+id="resendBtn"
+>
+
+<span class="btn-label">
+Send verification email
+</span>
+
+<span
+class="btn-spinner"
+hidden>
+</span>
+
+</button>
+
+
+<p
+class="banner"
+id="resendBanner"
+hidden>
+</p>
+
+</form>
+
+</div>
+
+</section>
+
+</main>
+
+
+<script src="verify.js"></script>
+
 </body>
+
 </html>
