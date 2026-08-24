@@ -1,805 +1,931 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-
-:root {
-
-  --green-dark: #123b31;
-  --green: #1f7058;
-  --green-light: #e8f3ee;
-
-  --text: #17221f;
-  --muted: #708079;
-
-  --border: #dfe8e4;
-
-  --danger: #c94b4b;
-
-  --white: #ffffff;
-
-}
-
-
-body {
-
-  min-height: 100vh;
-
-  font-family:
-    "DM Sans",
-    sans-serif;
-
-  color: var(--text);
-
-  background:
-    linear-gradient(
-      135deg,
-      #edf5f1,
-      #f8faf9
-    );
-
-}
-
-
 /* ============================================================
-   BACKGROUND
+   MEMBER REGISTRY — COMPLETE DESIGN
+   Works with the exact index.html + verify.html provided
    ============================================================ */
 
-.page-bg {
+/* ------------------------------------------------------------
+   1. DESIGN TOKENS
+   ------------------------------------------------------------ */
 
+:root {
+  --bg-main: #0b1020;
+  --bg-secondary: #11182b;
+
+  --card: rgba(19, 27, 48, 0.88);
+  --card-light: rgba(255, 255, 255, 0.045);
+
+  --border: rgba(255, 255, 255, 0.10);
+  --border-hover: rgba(124, 92, 255, 0.55);
+
+  --primary: #7c5cff;
+  --primary-light: #9a83ff;
+  --secondary: #36dfc0;
+
+  --text-main: #f7f8ff;
+  --text-soft: #aeb7cc;
+  --text-muted: #737d95;
+
+  --success: #36dfc0;
+  --error: #ff718d;
+
+  --input-bg: rgba(255, 255, 255, 0.045);
+  --input-border: rgba(255, 255, 255, 0.11);
+
+  --shadow-card:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    0 10px 30px rgba(0, 0, 0, 0.20);
+
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Work Sans", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+
+/* ------------------------------------------------------------
+   2. RESET
+   ------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: var(--bg-main);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+
+  font-family: var(--font-body);
+  color: var(--text-main);
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(124, 92, 255, 0.25),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 90% 85%,
+      rgba(54, 223, 192, 0.16),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #080c18 0%,
+      #0d1324 45%,
+      #111a31 100%
+    );
+
+  overflow-x: hidden;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ------------------------------------------------------------
+   3. BACKGROUND DECORATION
+   ------------------------------------------------------------ */
+
+body::before,
+body::after {
+  content: "";
   position: fixed;
+  z-index: 0;
 
-  inset: 0;
+  width: 420px;
+  height: 420px;
+
+  border-radius: 50%;
 
   pointer-events: none;
 
-  background:
-    radial-gradient(
-      circle at 15% 20%,
-      rgba(31,112,88,.12),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 85% 80%,
-      rgba(31,112,88,.08),
-      transparent 30%
-    );
+  filter: blur(90px);
+  opacity: 0.22;
+}
 
+body::before {
+  top: -180px;
+  left: -140px;
+
+  background: var(--primary);
+
+  animation: floatingOrb 12s ease-in-out infinite;
+}
+
+body::after {
+  right: -160px;
+  bottom: -170px;
+
+  background: var(--secondary);
+
+  animation: floatingOrbReverse 15s ease-in-out infinite;
+}
+
+@keyframes floatingOrb {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(35px, 25px);
+  }
+}
+
+@keyframes floatingOrbReverse {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-30px, -25px);
+  }
 }
 
 
-/* ============================================================
-   MAIN
-   ============================================================ */
+/* ------------------------------------------------------------
+   4. MAIN PAGE LAYOUT
+   ------------------------------------------------------------ */
 
-.auth-container {
-
+.frame {
   position: relative;
+  z-index: 1;
 
-  width: min(
-    1100px,
-    calc(100% - 40px)
-  );
-
-  min-height: 680px;
-
-  margin: 40px auto;
+  width: 100%;
+  min-height: 100vh;
 
   display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 520px);
 
-  grid-template-columns:
-    1fr 1fr;
+  align-items: center;
 
-  background: var(--white);
+  gap: 70px;
 
-  border-radius: 28px;
+  padding: 55px clamp(28px, 7vw, 110px);
 
-  overflow: hidden;
-
-  box-shadow:
-    0 30px 80px
-    rgba(18,59,49,.12);
-
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
 
-/* ============================================================
-   BRAND PANEL
-   ============================================================ */
+/* ------------------------------------------------------------
+   5. LEFT BRAND PANEL
+   ------------------------------------------------------------ */
 
-.brand-panel {
+.panel-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 620px;
+}
+
+.panel-inner {
+  width: 100%;
+  max-width: 560px;
+
+  position: relative;
+}
+
+
+/* ------------------------------------------------------------
+   6. EYEBROW
+   ------------------------------------------------------------ */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 3px;
+
+  color: var(--secondary);
+
+  text-transform: uppercase;
+
+  margin-bottom: 22px;
+}
+
+.eyebrow::before {
+  content: "";
+
+  width: 24px;
+  height: 1px;
+
+  background: var(--secondary);
+
+  margin-right: 12px;
+
+  opacity: 0.8;
+}
+
+.eyebrow.small {
+  font-size: 10px;
+  letter-spacing: 2px;
+
+  margin-bottom: 13px;
+}
+
+.eyebrow.small::before {
+  display: none;
+}
+
+
+/* ------------------------------------------------------------
+   7. MAIN HEADLINE
+   ------------------------------------------------------------ */
+
+.headline {
+  margin: 0;
+
+  max-width: 580px;
+
+  font-family: var(--font-display);
+
+  font-size: clamp(48px, 6vw, 82px);
+
+  font-weight: 600;
+
+  line-height: 0.98;
+
+  letter-spacing: -2px;
+
+  color: var(--text-main);
+}
+
+.tagline {
+  max-width: 520px;
+
+  margin: 28px 0 0;
+
+  font-size: 16px;
+
+  line-height: 1.75;
+
+  color: var(--text-soft);
+}
+
+
+/* ------------------------------------------------------------
+   8. STAMP
+   ------------------------------------------------------------ */
+
+.stamp {
+  position: absolute;
+
+  right: 0;
+  top: 5px;
+
+  width: 150px;
+  height: 150px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: rgba(124, 92, 255, 0.75);
+
+  transform: rotate(8deg);
+
+  opacity: 0.9;
+
+  animation: stampFloat 5s ease-in-out infinite;
+}
+
+.stamp svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes stampFloat {
+  0%,
+  100% {
+    transform: rotate(8deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(5deg) translateY(-7px);
+  }
+}
+
+
+/* ------------------------------------------------------------
+   9. TICKET NUMBER
+   ------------------------------------------------------------ */
+
+.ticket-number {
+  margin-top: 45px;
+
+  font-family: var(--font-mono);
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+
+  color: var(--text-muted);
+}
+
+.ticket-number span {
+  color: var(--primary-light);
+}
+
+
+/* ------------------------------------------------------------
+   10. RIGHT FORM AREA
+   ------------------------------------------------------------ */
+
+.panel-form {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ------------------------------------------------------------
+   11. MAIN REGISTRATION CARD
+   ------------------------------------------------------------ */
+
+.stub {
+  position: relative;
+
+  width: 100%;
 
   background:
     linear-gradient(
       145deg,
-      #123b31,
-      #1e604d
+      rgba(255, 255, 255, 0.075),
+      rgba(255, 255, 255, 0.025)
     );
 
-  color: white;
+  border: 1px solid var(--border);
 
-  padding: 60px;
+  border-radius: var(--radius-xl);
 
-  display: flex;
+  padding: 40px;
 
-  align-items: center;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
 
+  box-shadow: var(--shadow-card);
+
+  overflow: hidden;
+
+  animation: cardAppear 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.stub::before {
+  content: "";
 
-.brand-content {
+  position: absolute;
 
-  max-width: 430px;
+  top: 0;
+  left: 12%;
 
-}
+  width: 76%;
+  height: 1px;
 
-
-.brand-logo {
-
-  width: 58px;
-
-  height: 58px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  border-radius: 16px;
-
-  background:
-    rgba(255,255,255,.12);
-
-  border:
-    1px solid
-    rgba(255,255,255,.2);
-
-  margin-bottom: 34px;
-
-}
-
-
-.brand-logo span {
-
-  font-size: 25px;
-
-}
-
-
-.eyebrow {
-
-  font-size: 11px;
-
-  letter-spacing: 2.5px;
-
-  font-weight: 700;
-
-  color: #82c9ae;
-
-}
-
-
-.brand-panel h1 {
-
-  margin-top: 18px;
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size: clamp(
-    42px,
-    5vw,
-    64px
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(124, 92, 255, 0.8),
+    transparent
   );
+}
 
-  line-height: 1.05;
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.98);
+  }
 
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 
-.brand-panel h1 span {
+/* ------------------------------------------------------------
+   12. DECORATIVE CARD NOTCHES
+   ------------------------------------------------------------ */
 
-  color: #8bd0b5;
-
+.stub-notch {
+  display: none;
 }
 
 
-.brand-description {
+/* ------------------------------------------------------------
+   13. FORM HEADER
+   ------------------------------------------------------------ */
 
-  margin-top: 24px;
-
-  color: #c7ddd4;
-
-  line-height: 1.7;
-
-  font-size: 15px;
-
+.stub-head {
+  margin-bottom: 30px;
 }
 
+.stub-head h2 {
+  margin: 0;
 
-.feature-list {
-
-  margin-top: 45px;
-
-  display: grid;
-
-  gap: 22px;
-
-}
-
-
-.feature {
-
-  display: flex;
-
-  gap: 15px;
-
-  align-items: flex-start;
-
-}
-
-
-.feature-icon {
-
-  flex-shrink: 0;
-
-  width: 38px;
-
-  height: 38px;
-
-  border-radius: 11px;
-
-  background:
-    rgba(255,255,255,.1);
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-}
-
-
-.feature strong {
-
-  font-size: 14px;
-
-}
-
-
-.feature p {
-
-  margin-top: 4px;
-
-  font-size: 12px;
-
-  color: #a9c9be;
-
-}
-
-
-/* ============================================================
-   FORM PANEL
-   ============================================================ */
-
-.form-panel {
-
-  background: #ffffff;
-
-  padding: 55px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-}
-
-
-.form-card {
-
-  width: 100%;
-
-  max-width: 430px;
-
-}
-
-
-.form-header {
-
-  margin-bottom: 28px;
-
-}
-
-
-.mini-logo {
-
-  width: 42px;
-
-  height: 42px;
-
-  border-radius: 12px;
-
-  background: var(--green-light);
-
-  color: var(--green);
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  font-weight: bold;
-
-  margin-bottom: 18px;
-
-}
-
-
-.form-header h2 {
-
-  font-family:
-    "Playfair Display",
-    serif;
+  font-family: var(--font-display);
 
   font-size: 32px;
 
-  margin-bottom: 7px;
+  line-height: 1.15;
 
+  font-weight: 600;
+
+  letter-spacing: -0.5px;
+
+  color: var(--text-main);
 }
 
-
-.form-header p {
-
-  color: var(--muted);
+.stub-head .sub {
+  margin-top: 9px;
 
   font-size: 14px;
 
+  line-height: 1.5;
+
+  color: var(--text-muted);
 }
 
 
-/* ============================================================
-   FIELDS
-   ============================================================ */
+/* ------------------------------------------------------------
+   14. FORM
+   ------------------------------------------------------------ */
+
+#registerForm,
+#resendForm {
+  width: 100%;
+}
+
+
+/* ------------------------------------------------------------
+   15. FORM FIELD
+   ------------------------------------------------------------ */
 
 .field {
-
   margin-bottom: 19px;
-
 }
 
-
 .field label {
-
   display: block;
 
   margin-bottom: 8px;
 
-  font-size: 13px;
-
-  font-weight: 600;
-
-}
-
-
-.input-wrapper {
-
-  position: relative;
-
-}
-
-
-.input-icon {
-
-  position: absolute;
-
-  left: 15px;
-
-  top: 50%;
-
-  transform:
-    translateY(-50%);
-
-  font-size: 15px;
-
-  opacity: .65;
-
-}
-
-
-.input-wrapper input {
-
-  width: 100%;
-
-  height: 52px;
-
-  border:
-    1.5px solid
-    var(--border);
-
-  border-radius: 12px;
-
-  outline: none;
-
-  padding:
-    0 48px 0 43px;
-
-  font-family: inherit;
-
-  font-size: 14px;
-
-  color: var(--text);
-
-  background: #fbfcfc;
-
-  transition: .2s;
-
-}
-
-
-.input-wrapper input:focus {
-
-  border-color:
-    var(--green);
-
-  background: white;
-
-  box-shadow:
-    0 0 0 4px
-    rgba(31,112,88,.08);
-
-}
-
-
-.input-wrapper input::placeholder {
-
-  color: #a5b0ac;
-
-}
-
-
-.toggle-vis {
-
-  position: absolute;
-
-  right: 13px;
-
-  top: 50%;
-
-  transform:
-    translateY(-50%);
-
-  border: 0;
-
-  background: none;
-
-  color: var(--green);
-
-  font-size: 11px;
-
-  font-weight: 700;
-
-  cursor: pointer;
-
-}
-
-
-/* ============================================================
-   PASSWORD STRENGTH
-   ============================================================ */
-
-.password-strength {
-
-  margin-top: 8px;
-
-}
-
-
-.strength-bar {
-
-  display: flex;
-
-  gap: 4px;
-
-}
-
-
-.strength-bar span {
-
-  height: 3px;
-
-  flex: 1;
-
-  border-radius: 5px;
-
-  background: #e5ebe8;
-
-}
-
-
-.strength-bar span.weak {
-
-  background: #d85b5b;
-
-}
-
-
-.strength-bar span.medium {
-
-  background: #d9a441;
-
-}
-
-
-.strength-bar span.strong {
-
-  background: #38a778;
-
-}
-
-
-.password-strength small {
-
-  display: block;
-
-  margin-top: 5px;
-
-  color: var(--muted);
+  font-family: var(--font-mono);
 
   font-size: 10px;
 
+  font-weight: 600;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+
+  color: var(--text-soft);
 }
 
-
-/* ============================================================
-   ERRORS
-   ============================================================ */
-
-.error {
-
-  display: block;
-
-  min-height: 16px;
-
-  margin-top: 5px;
-
-  color: var(--danger);
-
-  font-size: 11px;
-
-}
-
-
-.has-error input {
-
-  border-color:
-    var(--danger);
-
-  background:
-    #fff8f8;
-
-}
-
-
-/* ============================================================
-   BUTTON
-   ============================================================ */
-
-.btn-primary {
-
+.field input {
   width: 100%;
 
-  height: 53px;
+  height: 54px;
+
+  padding: 0 16px;
+
+  border: 1px solid var(--input-border);
+
+  border-radius: var(--radius-md);
+
+  outline: none;
+
+  background: var(--input-bg);
+
+  color: var(--text-main);
+
+  font-family: var(--font-body);
+
+  font-size: 14.5px;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.field input:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.field input:focus {
+  border-color: var(--primary);
+
+  background: rgba(124, 92, 255, 0.06);
+
+  box-shadow:
+    0 0 0 3px rgba(124, 92, 255, 0.13),
+    0 8px 25px rgba(0, 0, 0, 0.12);
+
+  transform: translateY(-1px);
+}
+
+.field input::placeholder {
+  color: rgba(174, 183, 204, 0.42);
+}
+
+
+/* ------------------------------------------------------------
+   16. PASSWORD INPUT + SHOW/HIDE
+   ------------------------------------------------------------ */
+
+.input-with-toggle {
+  position: relative;
+}
+
+.input-with-toggle input {
+  padding-right: 65px;
+}
+
+.toggle-vis {
+  position: absolute;
+
+  top: 50%;
+  right: 12px;
+
+  transform: translateY(-50%);
+
+  min-width: 42px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   border: 0;
 
-  border-radius: 12px;
+  border-radius: 9px;
 
-  background:
-    linear-gradient(
-      135deg,
-      #1f7058,
-      #185b48
-    );
+  background: transparent;
 
-  color: white;
+  color: var(--text-muted);
 
-  font-family: inherit;
+  font-family: var(--font-mono);
 
-  font-size: 14px;
-
-  font-weight: 700;
+  font-size: 11px;
 
   cursor: pointer;
 
   transition:
-    transform .2s,
-    box-shadow .2s,
-    opacity .2s;
-
-  box-shadow:
-    0 10px 20px
-    rgba(31,112,88,.2);
-
+    color 0.2s ease,
+    background 0.2s ease;
 }
 
+.toggle-vis:hover {
+  color: var(--secondary);
+
+  background: rgba(54, 223, 192, 0.08);
+}
+
+
+/* ------------------------------------------------------------
+   17. VALIDATION ERRORS
+   ------------------------------------------------------------ */
+
+.error {
+  display: block;
+
+  min-height: 0;
+
+  margin-top: 6px;
+
+  font-size: 12px;
+
+  line-height: 1.4;
+
+  color: var(--error);
+
+  opacity: 0;
+
+  transform: translateY(-3px);
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.field.has-error .error {
+  opacity: 1;
+
+  transform: translateY(0);
+
+  min-height: 17px;
+}
+
+.field.has-error input {
+  border-color: rgba(255, 113, 141, 0.75);
+
+  background: rgba(255, 113, 141, 0.05);
+
+  box-shadow:
+    0 0 0 3px rgba(255, 113, 141, 0.08);
+}
+
+
+/* ------------------------------------------------------------
+   18. PRIMARY BUTTON
+   ------------------------------------------------------------ */
+
+.btn-primary {
+  position: relative;
+
+  width: 100%;
+
+  height: 55px;
+
+  margin-top: 6px;
+
+  border: 0;
+
+  border-radius: var(--radius-md);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      #6250e8 55%,
+      #4e43c7
+    );
+
+  color: white;
+
+  font-family: var(--font-body);
+
+  font-size: 14.5px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.1px;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 12px 30px rgba(124, 92, 255, 0.28);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.btn-primary::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -100%;
+
+  width: 60%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+
+  transition: left 0.6s ease;
+}
+
+.btn-primary:hover::before {
+  left: 140%;
+}
 
 .btn-primary:hover {
+  transform: translateY(-2px);
 
-  transform:
-    translateY(-2px);
+  filter: brightness(1.08);
 
   box-shadow:
-    0 14px 25px
-    rgba(31,112,88,.25);
-
+    0 16px 35px rgba(124, 92, 255, 0.38);
 }
 
+.btn-primary:active {
+  transform: translateY(0);
+
+  box-shadow:
+    0 8px 20px rgba(124, 92, 255, 0.25);
+}
 
 .btn-primary:disabled {
-
-  opacity: .7;
+  opacity: 0.65;
 
   cursor: not-allowed;
 
   transform: none;
 
+  filter: none;
 }
 
 
-/* ============================================================
-   SPINNER
-   ============================================================ */
+/* ------------------------------------------------------------
+   19. BUTTON SPINNER
+   ------------------------------------------------------------ */
 
 .btn-spinner {
-
-  display: inline-block;
-
   width: 17px;
-
   height: 17px;
-
-  border:
-    2px solid
-    rgba(255,255,255,.4);
-
-  border-top-color:
-    white;
 
   border-radius: 50%;
 
-  animation:
-    spin .7s linear infinite;
+  border: 2px solid rgba(255, 255, 255, 0.28);
 
+  border-top-color: white;
+
+  animation: buttonSpin 0.75s linear infinite;
 }
 
-
-@keyframes spin {
-
+@keyframes buttonSpin {
   to {
     transform: rotate(360deg);
   }
-
 }
 
 
-/* ============================================================
-   BANNER
-   ============================================================ */
+/* ------------------------------------------------------------
+   20. FORM MESSAGE / BANNER
+   ------------------------------------------------------------ */
 
 .banner {
+  margin: 14px 0 0;
 
-  margin-top: 14px;
+  padding: 12px 14px;
 
-  padding: 12px;
+  border-radius: 11px;
 
-  border-radius: 10px;
+  border: 1px solid rgba(255, 113, 141, 0.25);
 
-  background: #fff1f1;
+  background: rgba(255, 113, 141, 0.08);
 
-  color: var(--danger);
+  color: var(--error);
 
-  font-size: 12px;
+  font-size: 12.5px;
 
-  line-height: 1.5;
+  line-height: 1.45;
 
+  text-align: center;
 }
-
 
 .banner.ok {
+  border-color: rgba(54, 223, 192, 0.25);
 
-  background: #edf8f3;
+  background: rgba(54, 223, 192, 0.08);
 
-  color: #237653;
-
+  color: var(--success);
 }
 
 
-/* ============================================================
-   LOGIN
-   ============================================================ */
+/* ------------------------------------------------------------
+   21. CARD FOOTER
+   ------------------------------------------------------------ */
 
-.login-note {
+.stub-perf {
+  height: 1px;
+
+  margin: 28px 0 20px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.09),
+      transparent
+    );
+}
+
+.footnote {
+  margin: 0;
 
   text-align: center;
 
-  margin-top: 23px;
+  font-size: 12.5px;
 
-  font-size: 12px;
-
-  color: var(--muted);
-
+  color: var(--text-muted);
 }
 
-
-.login-note a {
-
-  color: var(--green);
-
-  font-weight: 700;
+.footnote a {
+  color: var(--secondary);
 
   text-decoration: none;
 
+  font-weight: 600;
+
+  transition: color 0.2s ease;
+}
+
+.footnote a:hover {
+  color: #74f1d9;
+
+  text-decoration: underline;
 }
 
 
-/* ============================================================
-   SUCCESS
-   ============================================================ */
+/* ------------------------------------------------------------
+   22. SUCCESS / RESULT CARDS
+   ------------------------------------------------------------ */
 
-.success-card {
-
+.result-stub {
   text-align: center;
 
-  animation:
-    fadeUp .45s ease;
+  padding: 48px 40px;
+}
 
+.result-stub h2 {
+  margin: 20px 0 10px;
+
+  font-family: var(--font-display);
+
+  font-size: 30px;
+
+  line-height: 1.2;
+
+  font-weight: 600;
+
+  color: var(--text-main);
+}
+
+.result-stub p {
+  max-width: 390px;
+
+  margin: 0 auto;
+
+  color: var(--text-soft);
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+.result-stub p strong {
+  color: var(--secondary);
+
+  font-weight: 600;
+
+  word-break: break-word;
 }
 
 
-@keyframes fadeUp {
+/* ------------------------------------------------------------
+   23. SUCCESS STAMP
+   ------------------------------------------------------------ */
 
-  from {
-
-    opacity: 0;
-
-    transform:
-      translateY(15px);
-
-  }
-
-  to {
-
-    opacity: 1;
-
-    transform:
-      translateY(0);
-
-  }
-
-}
-
-
-.success-icon {
-
+.result-stamp {
   width: 76px;
-
   height: 76px;
 
-  margin: 0 auto 25px;
-
-  border-radius: 50%;
-
-  background: #e9f7f0;
-
-  color: #25805e;
+  margin: 0 auto;
 
   display: flex;
 
@@ -807,198 +933,439 @@ body {
 
   justify-content: center;
 
+  border-radius: 50%;
+}
+
+.result-stamp.success {
+  color: var(--success);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(54, 223, 192, 0.17),
+      rgba(54, 223, 192, 0.04)
+    );
+
+  border: 1px solid rgba(54, 223, 192, 0.35);
+
+  box-shadow:
+    0 0 0 8px rgba(54, 223, 192, 0.035),
+    0 15px 40px rgba(54, 223, 192, 0.12);
+
+  animation: successPop 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.result-stamp.error {
+  color: var(--error);
+
+  background: rgba(255, 113, 141, 0.09);
+
+  border: 1px solid rgba(255, 113, 141, 0.3);
+
+  font-family: var(--font-display);
+
   font-size: 32px;
 
-  font-weight: bold;
+  font-weight: 600;
+}
 
+.check-circle {
+  stroke: currentColor;
+
+  stroke-width: 2;
+}
+
+.check-mark {
+  stroke: currentColor;
+
+  stroke-width: 3;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+  stroke-dasharray: 45;
+
+  stroke-dashoffset: 45;
+
+  animation: drawCheck 0.6s 0.2s ease forwards;
+}
+
+@keyframes drawCheck {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes successPop {
+  from {
+    opacity: 0;
+
+    transform: scale(0.6);
+  }
+
+  70% {
+    transform: scale(1.08);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scale(1);
+  }
 }
 
 
-.success-content h2 {
+/* ------------------------------------------------------------
+   24. GHOST BUTTON
+   ------------------------------------------------------------ */
 
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size: 32px;
-
-  margin-bottom: 12px;
-
-}
-
-
-.success-content > p {
-
-  color: var(--muted);
-
-  line-height: 1.7;
-
-  font-size: 14px;
-
-}
-
-
-.email-notice {
-
-  margin:
-    25px 0;
-
-  padding: 16px;
-
-  border-radius: 13px;
-
-  background: #f4f8f6;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 13px;
-
-  text-align: left;
-
-}
-
-
-.email-notice > span {
-
-  font-size: 22px;
-
-}
-
-
-.email-notice strong {
-
-  font-size: 13px;
-
-}
-
-
-.email-notice p {
-
-  margin-top: 3px;
-
-  font-size: 11px;
-
-  color: var(--muted);
-
-}
-
-
-.btn-secondary {
-
+.btn-ghost {
   display: inline-flex;
 
   align-items: center;
 
   justify-content: center;
 
-  width: 100%;
+  min-height: 47px;
 
-  height: 50px;
+  margin-top: 25px;
+
+  padding: 0 22px;
+
+  border: 1px solid rgba(255, 255, 255, 0.13);
 
   border-radius: 12px;
 
-  border:
-    1.5px solid
-    var(--green);
+  background: rgba(255, 255, 255, 0.035);
 
-  color: var(--green);
+  color: var(--text-main);
 
   text-decoration: none;
 
   font-size: 13px;
 
-  font-weight: 700;
+  font-weight: 600;
 
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.btn-ghost:hover {
+  background: rgba(124, 92, 255, 0.10);
+
+  border-color: rgba(124, 92, 255, 0.45);
+
+  color: white;
+
+  transform: translateY(-2px);
 }
 
 
-/* ============================================================
-   MOBILE
-   ============================================================ */
+/* ------------------------------------------------------------
+   25. VERIFICATION LOADING SPINNER
+   ------------------------------------------------------------ */
 
-@media (max-width: 850px) {
+.spinner-lg {
+  width: 54px;
+  height: 54px;
 
-  .auth-container {
+  margin: 0 auto 25px;
 
-    grid-template-columns: 1fr;
+  border-radius: 50%;
 
-    margin: 20px auto;
+  border: 3px solid rgba(255, 255, 255, 0.08);
 
+  border-top-color: var(--secondary);
+
+  border-right-color: var(--primary);
+
+  animation: verifySpin 0.85s linear infinite;
+
+  box-shadow:
+    0 0 30px rgba(54, 223, 192, 0.10);
+}
+
+@keyframes verifySpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ------------------------------------------------------------
+   26. HIDDEN ELEMENTS
+   ------------------------------------------------------------ */
+
+[hidden] {
+  display: none !important;
+}
+
+
+/* ------------------------------------------------------------
+   27. TEXT SELECTION
+   ------------------------------------------------------------ */
+
+::selection {
+  background: rgba(124, 92, 255, 0.45);
+
+  color: white;
+}
+
+
+/* ------------------------------------------------------------
+   28. SCROLLBAR
+   ------------------------------------------------------------ */
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090d18;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 92, 255, 0.45);
+
+  border-radius: 20px;
+
+  border: 2px solid #090d18;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 92, 255, 0.7);
+}
+
+
+/* ------------------------------------------------------------
+   29. RESPONSIVE — TABLET
+   ------------------------------------------------------------ */
+
+@media (max-width: 1050px) {
+
+  .frame {
+    grid-template-columns: 1fr 460px;
+
+    gap: 40px;
+
+    padding-left: 45px;
+    padding-right: 45px;
   }
 
-
-  .brand-panel {
-
-    padding: 40px;
-
+  .headline {
+    font-size: 58px;
   }
 
+  .stamp {
+    width: 115px;
+    height: 115px;
 
-  .brand-panel h1 {
+    right: 10px;
+  }
+}
 
-    font-size: 44px;
 
+/* ------------------------------------------------------------
+   30. RESPONSIVE — MOBILE
+   ------------------------------------------------------------ */
+
+@media (max-width: 820px) {
+
+  body {
+    min-height: 100vh;
   }
 
+  .frame {
+    display: flex;
 
-  .feature-list {
+    flex-direction: column;
 
+    align-items: stretch;
+
+    justify-content: center;
+
+    gap: 35px;
+
+    padding: 45px 20px;
+  }
+
+  .panel-brand {
+    min-height: auto;
+
+    justify-content: flex-start;
+  }
+
+  .panel-inner {
+    max-width: 600px;
+
+    margin: 0 auto;
+  }
+
+  .headline {
+    font-size: clamp(44px, 11vw, 62px);
+
+    letter-spacing: -1.5px;
+  }
+
+  .tagline {
+    font-size: 14px;
+
+    margin-top: 20px;
+  }
+
+  .stamp {
     display: none;
-
   }
 
-
-  .form-panel {
-
-    padding: 40px;
-
+  .ticket-number {
+    margin-top: 22px;
   }
 
-}
-
-
-@media (max-width: 500px) {
-
-  .auth-container {
-
+  .panel-form {
     width: 100%;
 
-    margin: 0;
+    max-width: 600px;
 
-    border-radius: 0;
-
-    min-height: 100vh;
-
+    margin: 0 auto;
   }
 
+  .stub {
+    padding: 34px 28px;
+  }
+}
 
-  .brand-panel {
 
-    padding: 35px 25px;
+/* ------------------------------------------------------------
+   31. RESPONSIVE — SMALL PHONE
+   ------------------------------------------------------------ */
 
+@media (max-width: 480px) {
+
+  .frame {
+    padding: 30px 14px 35px;
+
+    gap: 28px;
   }
 
+  .eyebrow {
+    font-size: 9px;
 
-  .brand-panel h1 {
+    letter-spacing: 2.3px;
 
+    margin-bottom: 17px;
+  }
+
+  .headline {
+    font-size: 43px;
+
+    line-height: 1;
+
+    letter-spacing: -1px;
+  }
+
+  .tagline {
+    font-size: 13px;
+
+    line-height: 1.65;
+  }
+
+  .stub {
+    padding: 30px 21px;
+
+    border-radius: 22px;
+  }
+
+  .stub-head {
+    margin-bottom: 25px;
+  }
+
+  .stub-head h2 {
+    font-size: 27px;
+  }
+
+  .field {
+    margin-bottom: 16px;
+  }
+
+  .field input {
+    height: 51px;
+
+    font-size: 14px;
+  }
+
+  .btn-primary {
+    height: 53px;
+  }
+
+  .result-stub {
+    padding: 38px 22px;
+  }
+
+  .result-stub h2 {
+    font-size: 27px;
+  }
+
+  .result-stub p {
+    font-size: 13.5px;
+  }
+}
+
+
+/* ------------------------------------------------------------
+   32. VERY SMALL DEVICES
+   ------------------------------------------------------------ */
+
+@media (max-width: 360px) {
+
+  .frame {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .headline {
     font-size: 38px;
-
   }
 
-
-  .form-panel {
-
-    padding: 35px 25px;
-
+  .stub {
+    padding: 26px 17px;
   }
 
-
-  .form-header h2 {
-
-    font-size: 28px;
-
+  .stub-head h2 {
+    font-size: 24px;
   }
+}
 
+
+/* ------------------------------------------------------------
+   33. ACCESSIBILITY / REDUCED MOTION
+   ------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ------------------------------------------------------------
+   34. FOCUS ACCESSIBILITY
+   ------------------------------------------------------------ */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--secondary);
+
+  outline-offset: 3px;
 }
