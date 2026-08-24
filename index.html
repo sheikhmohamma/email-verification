@@ -6,315 +6,463 @@
 
     <title>ENTRY — Create Account</title>
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:wght@500;600;700&display=swap"
-          rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Background layers -->
+    <!-- =========================================
+         BACKGROUND
+    ========================================== -->
+
     <div class="background"></div>
     <div class="background-overlay"></div>
 
-    <!-- Decorative glow -->
-    <div class="glow glow-one"></div>
-    <div class="glow glow-two"></div>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
     <div class="noise"></div>
 
 
+    <!-- =========================================
+         MAIN PAGE
+    ========================================== -->
+
     <main class="page">
 
-        <!-- Brand -->
-        <a href="#" class="brand">
+        <!-- =====================================
+             BRAND
+        ====================================== -->
 
-            <div class="brand-icon">
-                ✦
-            </div>
+        <header class="brand-header">
 
-            <span>ENTRY</span>
+            <a href="#" class="brand">
 
-        </a>
+                <span class="brand-mark">
+                    E
+                </span>
+
+                <span class="brand-name">
+                    ENTRY
+                </span>
+
+            </a>
+
+            <span class="header-label">
+                CREATE ACCOUNT
+            </span>
+
+        </header>
 
 
-        <!-- Main Glass Card -->
-        <section class="glass-card">
+        <!-- =====================================
+             MAIN CONTENT
+        ====================================== -->
 
-            <div class="card-top">
-
-                <div class="status-dot"></div>
-
-                <span>IDENTITY REGISTRATION</span>
-
-            </div>
+        <section class="auth-layout">
 
 
-            <div class="heading">
+            <!-- =================================
+                 LEFT INFORMATION
+            ================================== -->
+
+            <div class="intro-section">
+
+                <div class="intro-number">
+                    01
+                </div>
 
                 <p class="eyebrow">
-                    YOUR DIGITAL SPACE
+                    WELCOME TO ENTRY
                 </p>
 
                 <h1>
-                    Begin your<br>
-                    <em>journey.</em>
+                    Your space.
+                    <br>
+                    <em>Your journey.</em>
                 </h1>
 
-                <p class="subtitle">
-                    Create your account and verify your identity
-                    with one secure email confirmation.
+                <p class="intro-text">
+                    Create your personal account and step into
+                    a secure digital space designed around you.
                 </p>
+
+
+                <!-- Feature list -->
+
+                <div class="feature-list">
+
+                    <div class="feature-item">
+
+                        <span class="feature-number">
+                            01
+                        </span>
+
+                        <div>
+                            <strong>
+                                Simple
+                            </strong>
+
+                            <p>
+                                Create your account in a few steps.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-item">
+
+                        <span class="feature-number">
+                            02
+                        </span>
+
+                        <div>
+                            <strong>
+                                Secure
+                            </strong>
+
+                            <p>
+                                Your account is protected by email verification.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-item">
+
+                        <span class="feature-number">
+                            03
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Personal
+                            </strong>
+
+                            <p>
+                                Everything starts with your identity.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
 
-            <!-- Form -->
-            <form id="registrationForm" novalidate>
+            <!-- =================================
+                 REGISTRATION CARD
+            ================================== -->
+
+            <section class="auth-card">
 
 
-                <!-- Full Name -->
-                <div class="field-group">
+                <!-- Card Header -->
 
-                    <label for="fullName">
-                        FULL NAME
-                    </label>
+                <div class="card-header">
 
-                    <div class="input-container">
+                    <div>
 
-                        <span class="field-icon">○</span>
+                        <span class="card-label">
+                            ACCOUNT
+                        </span>
 
-                        <input
-                            type="text"
-                            id="fullName"
-                            placeholder="Enter your full name"
-                            autocomplete="name"
-                        >
+                        <h2>
+                            Get started
+                        </h2>
 
                     </div>
 
-                    <small
-                        class="error-message"
-                        id="nameError"
-                    ></small>
+                    <div class="status-indicator">
+
+                        <span class="status-dot"></span>
+
+                        <span>
+                            SECURE
+                        </span>
+
+                    </div>
 
                 </div>
 
 
-                <!-- Email -->
-                <div class="field-group">
+                <!-- =================================
+                     REGISTRATION FORM
+                ================================== -->
 
-                    <label for="email">
-                        EMAIL ADDRESS
-                    </label>
-
-                    <div class="input-container">
-
-                        <span class="field-icon">@</span>
-
-                        <input
-                            type="email"
-                            id="email"
-                            placeholder="you@example.com"
-                            autocomplete="email"
-                        >
-
-                    </div>
-
-                    <small
-                        class="error-message"
-                        id="emailError"
-                    ></small>
-
-                </div>
+                <form id="registrationForm" novalidate>
 
 
-                <!-- Password -->
-                <div class="field-group">
+                    <!-- Full Name -->
 
-                    <label for="password">
-                        PASSWORD
-                    </label>
+                    <div class="field-group">
 
-                    <div class="input-container">
+                        <label for="fullName">
+                            Full name
+                        </label>
 
-                        <span class="field-icon">✦</span>
+                        <div class="input-container">
 
-                        <input
-                            type="password"
-                            id="password"
-                            placeholder="Minimum 6 characters"
-                            autocomplete="new-password"
-                        >
+                            <input
+                                type="text"
+                                id="fullName"
+                                placeholder="Your full name"
+                                autocomplete="name"
+                            >
 
-                        <button
-                            type="button"
-                            class="toggle-password"
-                            data-target="password"
-                        >
-                            ◉
-                        </button>
+                        </div>
+
+                        <small
+                            class="error-message"
+                            id="nameError"
+                        ></small>
 
                     </div>
 
-                    <small
-                        class="error-message"
-                        id="passwordError"
-                    ></small>
 
-                </div>
+                    <!-- Email -->
 
+                    <div class="field-group">
 
-                <!-- Confirm Password -->
-                <div class="field-group">
+                        <label for="email">
+                            Email address
+                        </label>
 
-                    <label for="confirmPassword">
-                        CONFIRM PASSWORD
-                    </label>
+                        <div class="input-container">
 
-                    <div class="input-container">
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                            >
 
-                        <span class="field-icon">✓</span>
+                        </div>
 
-                        <input
-                            type="password"
-                            id="confirmPassword"
-                            placeholder="Repeat your password"
-                            autocomplete="new-password"
-                        >
-
-                        <button
-                            type="button"
-                            class="toggle-password"
-                            data-target="confirmPassword"
-                        >
-                            ◉
-                        </button>
+                        <small
+                            class="error-message"
+                            id="emailError"
+                        ></small>
 
                     </div>
 
-                    <small
-                        class="error-message"
-                        id="confirmPasswordError"
-                    ></small>
 
-                </div>
+                    <!-- Password -->
+
+                    <div class="field-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="input-container">
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Minimum 6 characters"
+                                autocomplete="new-password"
+                            >
+
+                            <button
+                                type="button"
+                                class="toggle-password"
+                                data-target="password"
+                                aria-label="Show password"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="error-message"
+                            id="passwordError"
+                        ></small>
+
+                    </div>
 
 
-                <!-- Submit -->
-                <button
-                    type="submit"
-                    class="create-button"
-                    id="submitButton"
+                    <!-- Confirm Password -->
+
+                    <div class="field-group">
+
+                        <label for="confirmPassword">
+                            Confirm password
+                        </label>
+
+                        <div class="input-container">
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                placeholder="Repeat your password"
+                                autocomplete="new-password"
+                            >
+
+                            <button
+                                type="button"
+                                class="toggle-password"
+                                data-target="confirmPassword"
+                                aria-label="Show password"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="error-message"
+                            id="confirmPasswordError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- Submit Button -->
+
+                    <button
+                        type="submit"
+                        class="create-button"
+                        id="submitButton"
+                    >
+
+                        <span class="button-text">
+                            Create account
+                        </span>
+
+                        <span class="button-loading">
+
+                            <span class="spinner"></span>
+
+                            Creating account...
+
+                        </span>
+
+                        <span class="button-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <!-- Login -->
+
+                    <p class="login-link">
+
+                        Already have an account?
+
+                        <a
+                            href="#"
+                            id="loginLink"
+                        >
+                            Sign in
+                        </a>
+
+                    </p>
+
+                </form>
+
+
+                <!-- =================================
+                     SUCCESS STATE
+                ================================== -->
+
+                <div
+                    class="success-state"
+                    id="successState"
                 >
 
-                    <span class="button-text">
-                        CREATE ACCOUNT
-                    </span>
+                    <div class="success-animation">
 
-                    <span class="button-loading">
+                        <div class="pulse-ring ring-1"></div>
 
-                        <span class="spinner"></span>
+                        <div class="pulse-ring ring-2"></div>
 
-                        Creating account...
+                        <div class="success-circle">
+                            ✓
+                        </div>
 
-                    </span>
-
-                    <span class="button-arrow">
-                        →
-                    </span>
-
-                </button>
+                    </div>
 
 
-                <p class="login-link">
-
-                    Already have an account?
-
-                    <a href="#" id="loginLink">
-                        Login
-                    </a>
-
-                </p>
+                    <p class="eyebrow">
+                        ACCOUNT CREATED
+                    </p>
 
 
-            </form>
+                    <h2>
+                        You're almost there.
+                    </h2>
 
 
-            <!-- Success -->
-            <div
-                class="success-state"
-                id="successState"
-            >
+                    <p>
+                        We've sent a verification link to
+                    </p>
 
-                <div class="success-animation">
 
-                    <div class="pulse-ring ring-1"></div>
-                    <div class="pulse-ring ring-2"></div>
+                    <strong id="registeredEmail"></strong>
 
-                    <div class="success-circle">
-                        ✓
+
+                    <div class="verification-note">
+
+                        <span>✦</span>
+
+                        Check your inbox and verify your email
+                        to continue.
+
                     </div>
 
                 </div>
 
-
-                <p class="eyebrow">
-                    REGISTRATION COMPLETE
-                </p>
-
-                <h2>
-                    You're almost there.
-                </h2>
-
-                <p>
-                    A verification link has been sent to
-                </p>
-
-                <strong id="registeredEmail"></strong>
-
-                <div class="verification-note">
-
-                    <span>✦</span>
-
-                    Check your inbox and verify within
-                    30 minutes.
-
-                </div>
-
-            </div>
-
+            </section>
 
         </section>
 
 
-        <!-- Bottom information -->
-        <div class="bottom-bar">
+        <!-- =====================================
+             FOOTER
+        ====================================== -->
+
+        <footer class="bottom-bar">
 
             <span>
-                SECURE REGISTRATION
+                © ENTRY
             </span>
 
             <div class="bottom-line"></div>
 
             <span>
-                VERIFY • ENTER
+                PRIVATE • SECURE • SIMPLE
             </span>
 
-        </div>
+        </footer>
 
     </main>
 
 
+    <!-- =========================================
+         GOOGLE SCRIPT
+    ========================================== -->
+
     <script>
         const GOOGLE_SCRIPT_URL =
-            "https://script.google.com/macros/s/AKfycbyaZwGzzsPV1QTzX2hJz83F4tgRxPZ1pPs_vxdTJn4YJZ1ffb8CW1qwZX1rN-aAzsITbw/exec";
+            "https://script.google.com/macros/s/AKfycbyaZwGzzsPV1QTzX2hJz83F4tgRxPZ1pPs_vxdTJnY4JZ1ffb8CW1qwZX1rN-aAzsITbw/exec";
     </script>
 
     <script src="script.js"></script>
