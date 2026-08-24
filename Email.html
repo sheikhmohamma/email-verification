@@ -1,211 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
 </head>
+<body style="margin:0; padding:0; background-color:#efe8d8; font-family: Georgia, 'Times New Roman', serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#efe8d8; padding: 40px 20px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" style="max-width:480px; background:#fffdf8; border-radius:10px; overflow:hidden; border:1px solid #d9d0ba;">
 
-<body style="
-  margin:0;
-  padding:0;
-  background:#eef3f0;
-  font-family:Arial,Helvetica,sans-serif;
-">
+          <!-- Header -->
+          <tr>
+            <td style="background:#2f5233; padding: 34px 30px; text-align:center;">
+              <p style="margin:0 0 6px; font-family: 'Courier New', monospace; font-size:11px; letter-spacing:3px; color:#d9a656;">MEMBER REGISTRY</p>
+              <h1 style="margin:0; font-size:22px; color:#f6f1e6; font-family: Georgia, serif; font-weight:600;">Welcome to <?= siteName ?></h1>
+            </td>
+          </tr>
 
-<table width="100%" cellpadding="0" cellspacing="0" style="
-  background:#eef3f0;
-  padding:40px 15px;
-">
+          <!-- Body -->
+          <tr>
+            <td style="padding: 32px 34px 6px; color:#1f2328;">
+              <p style="font-size:15px; line-height:1.6; margin:0 0 16px;">Hi <?= name ?>,</p>
+              <p style="font-size:15px; line-height:1.6; margin:0 0 20px; color:#4a4e55;">
+                Thanks for creating your account. Please confirm your email address to complete your registration.
+              </p>
+            </td>
+          </tr>
 
-<tr>
-<td align="center">
+          <!-- Button -->
+          <tr>
+            <td style="padding: 4px 34px 8px; text-align:center;">
+              <a href="<?= verifyLink ?>"
+                 style="display:inline-block; background:#2f5233; color:#fffdf8; text-decoration:none; font-weight:bold; font-size:14px; letter-spacing:1px; font-family: 'Courier New', monospace; padding:14px 34px; border-radius:8px;">
+                VERIFY EMAIL
+              </a>
+            </td>
+          </tr>
 
-<table width="100%" cellpadding="0" cellspacing="0" style="
-  max-width:520px;
-  background:#ffffff;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 12px 40px rgba(25,55,40,.12);
-">
+          <!-- Expiry note -->
+          <tr>
+            <td style="padding: 14px 34px 26px; text-align:center;">
+              <p style="font-size:12.5px; color:#8b8271; font-family: 'Courier New', monospace; letter-spacing:0.5px; margin:0;">
+                VALID FOR <?= expiryMinutes ?> MINUTES
+              </p>
+            </td>
+          </tr>
 
-<!-- HEADER -->
+          <!-- Dashed perforation -->
+          <tr>
+            <td style="padding: 0 34px;">
+              <div style="border-top:1.5px dashed #d9d0ba;"></div>
+            </td>
+          </tr>
 
-<tr>
-<td style="
-  background:linear-gradient(135deg,#143d32,#24624e);
-  padding:38px 30px;
-  text-align:center;
-">
+          <!-- Fallback link -->
+          <tr>
+            <td style="padding: 20px 34px 26px;">
+              <p style="font-size:12px; color:#8b8271; line-height:1.5; margin:0; font-family: Arial, sans-serif;">
+                Button not working? Copy and paste this link into your browser:<br/>
+                <a href="<?= verifyLink ?>" style="color:#2f5233; word-break:break-all;"><?= verifyLink ?></a>
+              </p>
+            </td>
+          </tr>
 
-<div style="
-  width:64px;
-  height:64px;
-  margin:0 auto 18px;
-  border-radius:50%;
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.25);
-  line-height:64px;
-  font-size:28px;
-  color:#ffffff;
-">
-✓
-</div>
+          <!-- Footer -->
+          <tr>
+            <td style="padding: 20px 34px; background:#f6f1e6; text-align:center;">
+              <p style="font-size:12px; color:#8b8271; margin:0; font-family: Arial, sans-serif;">
+                Thank you!<br/>
+                <?= siteName ?> Team
+              </p>
+            </td>
+          </tr>
 
-<div style="
-  font-size:11px;
-  letter-spacing:3px;
-  color:#b9dfce;
-  font-weight:bold;
-  margin-bottom:8px;
-">
-ACCOUNT VERIFICATION
-</div>
-
-<h1 style="
-  margin:0;
-  color:#ffffff;
-  font-size:26px;
-  line-height:1.3;
-">
-Welcome to <?= siteName ?>
-</h1>
-
-</td>
-</tr>
-
-
-<!-- BODY -->
-
-<tr>
-<td style="
-  padding:38px 38px 20px;
-  color:#1d2925;
-">
-
-<p style="
-  margin:0 0 18px;
-  font-size:16px;
-">
-Hi <strong><?= name ?></strong>,
-</p>
-
-<p style="
-  margin:0 0 24px;
-  color:#60716b;
-  font-size:15px;
-  line-height:1.7;
-">
-Thanks for creating your account. Please verify your email address to activate your account and complete your registration.
-</p>
-
-
-<!-- BUTTON -->
-
-<table width="100%" cellpadding="0" cellspacing="0">
-<tr>
-<td align="center">
-
-<a href="<?= verifyLink ?>" style="
-  display:inline-block;
-  padding:15px 32px;
-  background:#1f7058;
-  color:#ffffff;
-  text-decoration:none;
-  border-radius:10px;
-  font-size:14px;
-  font-weight:bold;
-  letter-spacing:.5px;
-">
-VERIFY MY EMAIL
-</a>
-
-</td>
-</tr>
-</table>
-
-
-<!-- EXPIRY -->
-
-<div style="
-  margin-top:22px;
-  padding:13px 16px;
-  background:#f2f7f4;
-  border-radius:10px;
-  text-align:center;
-  color:#668077;
-  font-size:12px;
-">
-🔒 This verification link expires in
-<strong><?= expiryMinutes ?> minutes</strong>.
-</div>
-
-</td>
-</tr>
-
-
-<!-- FALLBACK -->
-
-<tr>
-<td style="
-  padding:0 38px 30px;
-">
-
-<div style="
-  border-top:1px solid #e5ebe8;
-  padding-top:22px;
-">
-
-<p style="
-  margin:0 0 8px;
-  color:#82918b;
-  font-size:12px;
-">
-If the button doesn't work, copy and paste this link into your browser:
-</p>
-
-<a href="<?= verifyLink ?>" style="
-  color:#1f7058;
-  font-size:11px;
-  word-break:break-all;
-  line-height:1.6;
-">
-<?= verifyLink ?>
-</a>
-
-</div>
-
-</td>
-</tr>
-
-
-<!-- FOOTER -->
-
-<tr>
-<td style="
-  padding:22px;
-  background:#f7f9f8;
-  text-align:center;
-">
-
-<p style="
-  margin:0;
-  color:#81908a;
-  font-size:12px;
-  line-height:1.6;
-">
-You received this email because an account was created using this address.<br>
-© <?= siteName ?>
-</p>
-
-</td>
-</tr>
-
-</table>
-
-</td>
-</tr>
-
-</table>
-
+        </table>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
