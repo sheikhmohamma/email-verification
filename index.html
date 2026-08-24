@@ -1,124 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Create Your Account</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css" />
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Create Account</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
+
 <body>
 
-  <main class="frame">
+<div class="page-bg"></div>
 
-    <!-- Left: brand panel with the rubber-stamp signature -->
-    <section class="panel-brand">
-      <div class="panel-inner">
-        <span class="eyebrow">MEMBER REGISTRY</span>
-        <h1 class="headline">Your account,<br/>officially<br/>stamped.</h1>
-        <p class="tagline">A short form, one email to confirm, and you're on the record — no databases, just a Sheet and Gmail doing the work.</p>
+<main class="auth-container">
 
-        <div class="stamp" aria-hidden="true">
-          <svg viewBox="0 0 160 160" width="128" height="128">
-            <circle cx="80" cy="80" r="72" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 5"/>
-            <circle cx="80" cy="80" r="60" fill="none" stroke="currentColor" stroke-width="1.5"/>
-            <path id="stampCircleTop" fill="none" d="M 80,20 A 60,60 0 0 1 140,80"/>
-            <path id="stampCircleBot" fill="none" d="M 20,80 A 60,60 0 0 1 80,140"/>
-            <text font-family="IBM Plex Mono" font-size="10.5" letter-spacing="3" fill="currentColor">
-              <textPath href="#stampCircleTop" startOffset="2">VERIFIED · SECURE</textPath>
-            </text>
-            <text font-family="IBM Plex Mono" font-size="10.5" letter-spacing="3" fill="currentColor">
-              <textPath href="#stampCircleBot" startOffset="2">EST. TODAY</textPath>
-            </text>
-            <path d="M55 82 L72 98 L106 60" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
 
-        <div class="ticket-number">NO. <span id="ticketNumber">000142</span></div>
-      </div>
-    </section>
+<!-- LEFT SIDE -->
 
-    <!-- Right: the form, styled like a ticket stub -->
-    <section class="panel-form">
-      <div class="stub" id="registerCard">
-        <div class="stub-notch stub-notch-top"></div>
+<section class="brand-panel">
 
-        <div class="stub-head">
-          <span class="eyebrow small">NEW REGISTRATION</span>
-          <h2>Create your account</h2>
-          <p class="sub">Fill in your details below</p>
-        </div>
+<div class="brand-content">
 
-        <form id="registerForm" novalidate>
+<div class="brand-logo">
+<span>✓</span>
+</div>
 
-          <div class="field">
-            <label for="fullName">Full name</label>
-            <input type="text" id="fullName" name="fullName" placeholder="Jane Doe" autocomplete="name" />
-            <span class="error" id="err-fullName"></span>
-          </div>
+<div class="eyebrow">
+SECURE REGISTRATION
+</div>
 
-          <div class="field">
-            <label for="email">Email address</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" />
-            <span class="error" id="err-email"></span>
-          </div>
+<h1>
+Create your
+<br>
+<span>account.</span>
+</h1>
 
-          <div class="field">
-            <label for="password">Password</label>
-            <div class="input-with-toggle">
-              <input type="password" id="password" name="password" placeholder="At least 6 characters" autocomplete="new-password" />
-              <button type="button" class="toggle-vis" data-target="password" aria-label="Show password">show</button>
-            </div>
-            <span class="error" id="err-password"></span>
-          </div>
+<p class="brand-description">
+Join our community with a simple and secure registration process.
+Verify your email and you're ready to go.
+</p>
 
-          <div class="field">
-            <label for="confirmPassword">Confirm password</label>
-            <div class="input-with-toggle">
-              <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" autocomplete="new-password" />
-              <button type="button" class="toggle-vis" data-target="confirmPassword" aria-label="Show password">show</button>
-            </div>
-            <span class="error" id="err-confirmPassword"></span>
-          </div>
 
-          <button type="submit" class="btn-primary" id="submitBtn">
-            <span class="btn-label">Create account</span>
-            <span class="btn-spinner" hidden></span>
-          </button>
+<div class="feature-list">
 
-          <p class="banner" id="formBanner" hidden></p>
-        </form>
+<div class="feature">
+<div class="feature-icon">✓</div>
 
-        <div class="stub-perf"></div>
+<div>
+<strong>Email verification</strong>
+<p>Confirm your identity securely.</p>
+</div>
+</div>
 
-        <p class="footnote">Already have an account? <a href="#">Log in</a></p>
-      </div>
 
-      <!-- Post-submit success state -->
-      <div class="stub result-stub" id="successCard" hidden>
-        <div class="stub-notch stub-notch-top"></div>
-        <div class="result-stamp success">
-          <svg viewBox="0 0 52 52" width="36" height="36">
-            <circle class="check-circle" cx="26" cy="26" r="23" fill="none"/>
-            <path class="check-mark" fill="none" d="M14 27 L22 35 L38 17"/>
-          </svg>
-        </div>
-        <h2>Check your inbox</h2>
-        <p class="sub">
-          We've sent a verification link to <strong id="sentToEmail">your email</strong>.
-          Click it to activate your account. The link expires in 30 minutes.
-        </p>
-        <a href="verify.html" class="btn-ghost">Didn't get it? Resend email</a>
-      </div>
+<div class="feature">
+<div class="feature-icon">🔒</div>
 
-    </section>
-  </main>
+<div>
+<strong>Protected account</strong>
+<p>Your credentials stay private.</p>
+</div>
+</div>
 
-  <script src="script.js"></script>
-  <script>
-    document.getElementById("ticketNumber").textContent =
-      String(Math.floor(100000 + Math.random() * 900000)).slice(0, 6);
-  </script>
+
+<div class="feature">
+<div class="feature-icon">⚡</div>
+
+<div>
+<strong>Quick setup</strong>
+<p>Create your account in seconds.</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FORM SIDE -->
+
+<section class="form-panel">
+
+<div class="form-card"
+id="registerCard">
+
+
+<div class="form-header">
+
+<div class="mini-logo">
+✓
+</div>
+
+<h2>Create your account</h2>
+
+<p>
+Enter your details to get started.
+</p>
+
+</div>
+
+
+<form id="registerForm" novalidate>
+
+
+<!-- NAME -->
+
+<div class="field">
+
+<label for="fullName">
+Full name
+</label>
+
+<div class="input-wrapper">
+
+<span class="input-icon">👤</span>
+
+<input
+type="text"
+id="fullName"
+name="fullName"
+placeholder="John Doe"
+autocomplete="name"
+>
+
+</div>
+
+<span class="error"
+id="err-fullName">
+</span>
+
+</div>
+
+
+<!-- EMAIL -->
+
+<div class="field">
+
+<label for="email">
+Email address
+</label>
+
+<div class="input-wrapper">
+
+<span class="input-icon">✉</span>
+
+<input
+type="email"
+id="email"
+name="email"
+placeholder="you@example.com"
+autocomplete="email"
+>
+
+</div>
+
+<span class="error"
+id="err-email">
+</span>
+
+</div>
+
+
+<!-- PASSWORD -->
+
+<div class="field">
+
+<label for="password">
+Password
+</label>
+
+<div class="input-wrapper">
+
+<span class="input-icon">🔒</span>
+
+<input
+type="password"
+id="password"
+name="password"
+placeholder="Create a strong password"
+autocomplete="new-password"
+>
+
+<button
+type="button"
+class="toggle-vis"
+data-target="password"
+>
+Show
+</button>
+
+</div>
+
+<div class="password-strength">
+
+<div class="strength-bar">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<small id="strengthText">
+At least 6 characters
+</small>
+
+</div>
+
+<span class="error"
+id="err-password">
+</span>
+
+</div>
+
+
+<!-- CONFIRM -->
+
+<div class="field">
+
+<label for="confirmPassword">
+Confirm password
+</label>
+
+<div class="input-wrapper">
+
+<span class="input-icon">🔐</span>
+
+<input
+type="password"
+id="confirmPassword"
+name="confirmPassword"
+placeholder="Repeat your password"
+autocomplete="new-password"
+>
+
+<button
+type="button"
+class="toggle-vis"
+data-target="confirmPassword"
+>
+Show
+</button>
+
+</div>
+
+<span class="error"
+id="err-confirmPassword">
+</span>
+
+</div>
+
+
+<!-- SUBMIT -->
+
+<button
+type="submit"
+class="btn-primary"
+id="submitBtn"
+>
+
+<span class="btn-label">
+Create account
+</span>
+
+<span
+class="btn-spinner"
+hidden>
+</span>
+
+</button>
+
+
+<p
+class="banner"
+id="formBanner"
+hidden>
+</p>
+
+</form>
+
+
+<p class="login-note">
+Already have an account?
+<a href="#">
+Log in
+</a>
+</p>
+
+</div>
+
+
+<!-- SUCCESS CARD -->
+
+<div
+class="form-card success-card"
+id="successCard"
+hidden
+>
+
+<div class="success-icon">
+✓
+</div>
+
+<div class="success-content">
+
+<div class="eyebrow">
+REGISTRATION COMPLETE
+</div>
+
+<h2>
+Check your inbox
+</h2>
+
+<p>
+We've sent a verification link to
+<strong id="sentToEmail">
+your email
+</strong>.
+</p>
+
+<div class="email-notice">
+
+<span>✉</span>
+
+<div>
+<strong>Verification email sent</strong>
+
+<p>
+The link will expire in 30 minutes.
+</p>
+
+</div>
+
+</div>
+
+<a
+href="verify.html"
+class="btn-secondary"
+>
+Didn't receive it?
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<script src="script.js"></script>
+
 </body>
 </html>
