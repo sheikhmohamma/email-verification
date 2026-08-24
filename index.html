@@ -1,312 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Create Your Account</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  >
-
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Create Your Account</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-  <!-- Background -->
-  <div class="bg-orbs" aria-hidden="true">
-    <span class="orb orb-1"></span>
-    <span class="orb orb-2"></span>
-    <span class="orb orb-3"></span>
-  </div>
+  <main class="frame">
 
+    <!-- Left: brand panel with the rubber-stamp signature -->
+    <section class="panel-brand">
+      <div class="panel-inner">
+        <span class="eyebrow">MEMBER REGISTRY</span>
+        <h1 class="headline">Your account,<br/>officially<br/>stamped.</h1>
+        <p class="tagline">A short form, one email to confirm, and you're on the record — no databases, just a Sheet and Gmail doing the work.</p>
 
-  <main class="page">
+        <div class="stamp" aria-hidden="true">
+          <svg viewBox="0 0 160 160" width="128" height="128">
+            <circle cx="80" cy="80" r="72" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 5"/>
+            <circle cx="80" cy="80" r="60" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <path id="stampCircleTop" fill="none" d="M 80,20 A 60,60 0 0 1 140,80"/>
+            <path id="stampCircleBot" fill="none" d="M 20,80 A 60,60 0 0 1 80,140"/>
+            <text font-family="IBM Plex Mono" font-size="10.5" letter-spacing="3" fill="currentColor">
+              <textPath href="#stampCircleTop" startOffset="2">VERIFIED · SECURE</textPath>
+            </text>
+            <text font-family="IBM Plex Mono" font-size="10.5" letter-spacing="3" fill="currentColor">
+              <textPath href="#stampCircleBot" startOffset="2">EST. TODAY</textPath>
+            </text>
+            <path d="M55 82 L72 98 L106 60" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
 
-    <!-- =====================================================
-         REGISTER CARD
-         ===================================================== -->
+        <div class="ticket-number">NO. <span id="ticketNumber">000142</span></div>
+      </div>
+    </section>
 
-    <section class="card" id="registerCard">
+    <!-- Right: the form, styled like a ticket stub -->
+    <section class="panel-form">
+      <div class="stub" id="registerCard">
+        <div class="stub-notch stub-notch-top"></div>
 
-      <div class="card-head">
+        <div class="stub-head">
+          <span class="eyebrow small">NEW REGISTRATION</span>
+          <h2>Create your account</h2>
+          <p class="sub">Fill in your details below</p>
+        </div>
 
-        <div class="mark">✦</div>
+        <form id="registerForm" novalidate>
 
-        <h1>Create your account</h1>
+          <div class="field">
+            <label for="fullName">Full name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Jane Doe" autocomplete="name" />
+            <span class="error" id="err-fullName"></span>
+          </div>
 
+          <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" />
+            <span class="error" id="err-email"></span>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="input-with-toggle">
+              <input type="password" id="password" name="password" placeholder="At least 6 characters" autocomplete="new-password" />
+              <button type="button" class="toggle-vis" data-target="password" aria-label="Show password">show</button>
+            </div>
+            <span class="error" id="err-password"></span>
+          </div>
+
+          <div class="field">
+            <label for="confirmPassword">Confirm password</label>
+            <div class="input-with-toggle">
+              <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" autocomplete="new-password" />
+              <button type="button" class="toggle-vis" data-target="confirmPassword" aria-label="Show password">show</button>
+            </div>
+            <span class="error" id="err-confirmPassword"></span>
+          </div>
+
+          <button type="submit" class="btn-primary" id="submitBtn">
+            <span class="btn-label">Create account</span>
+            <span class="btn-spinner" hidden></span>
+          </button>
+
+          <p class="banner" id="formBanner" hidden></p>
+        </form>
+
+        <div class="stub-perf"></div>
+
+        <p class="footnote">Already have an account? <a href="#">Log in</a></p>
+      </div>
+
+      <!-- Post-submit success state -->
+      <div class="stub result-stub" id="successCard" hidden>
+        <div class="stub-notch stub-notch-top"></div>
+        <div class="result-stamp success">
+          <svg viewBox="0 0 52 52" width="36" height="36">
+            <circle class="check-circle" cx="26" cy="26" r="23" fill="none"/>
+            <path class="check-mark" fill="none" d="M14 27 L22 35 L38 17"/>
+          </svg>
+        </div>
+        <h2>Check your inbox</h2>
         <p class="sub">
-          Join us and get started in seconds
+          We've sent a verification link to <strong id="sentToEmail">your email</strong>.
+          Click it to activate your account. The link expires in 30 minutes.
         </p>
-
+        <a href="verify.html" class="btn-ghost">Didn't get it? Resend email</a>
       </div>
 
-
-      <!-- Registration Form -->
-
-      <form id="registerForm" novalidate>
-
-        <!-- Full Name -->
-
-        <div class="field">
-
-          <label for="fullName">
-            Full name
-          </label>
-
-          <div class="input-wrap">
-
-            <span class="icon" aria-hidden="true">
-              👤
-            </span>
-
-            <input
-              type="text"
-              id="fullName"
-              name="fullName"
-              placeholder="Jane Doe"
-              autocomplete="name"
-              maxlength="100"
-              required
-            >
-
-          </div>
-
-          <span
-            class="error"
-            id="err-fullName"
-            aria-live="polite"
-          ></span>
-
-        </div>
-
-
-        <!-- Email -->
-
-        <div class="field">
-
-          <label for="email">
-            Email address
-          </label>
-
-          <div class="input-wrap">
-
-            <span class="icon" aria-hidden="true">
-              ✉️
-            </span>
-
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="you@example.com"
-              autocomplete="email"
-              maxlength="150"
-              required
-            >
-
-          </div>
-
-          <span
-            class="error"
-            id="err-email"
-            aria-live="polite"
-          ></span>
-
-        </div>
-
-
-        <!-- Password -->
-
-        <div class="field">
-
-          <label for="password">
-            Password
-          </label>
-
-          <div class="input-wrap">
-
-            <span class="icon" aria-hidden="true">
-              🔒
-            </span>
-
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="At least 6 characters"
-              autocomplete="new-password"
-              minlength="6"
-              maxlength="128"
-              required
-            >
-
-            <button
-              type="button"
-              class="toggle-vis"
-              data-target="password"
-              aria-label="Show password"
-            >
-              👁
-            </button>
-
-          </div>
-
-          <span
-            class="error"
-            id="err-password"
-            aria-live="polite"
-          ></span>
-
-        </div>
-
-
-        <!-- Confirm Password -->
-
-        <div class="field">
-
-          <label for="confirmPassword">
-            Confirm password
-          </label>
-
-          <div class="input-wrap">
-
-            <span class="icon" aria-hidden="true">
-              🔒
-            </span>
-
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              placeholder="Re-enter your password"
-              autocomplete="new-password"
-              minlength="6"
-              maxlength="128"
-              required
-            >
-
-            <button
-              type="button"
-              class="toggle-vis"
-              data-target="confirmPassword"
-              aria-label="Show password"
-            >
-              👁
-            </button>
-
-          </div>
-
-          <span
-            class="error"
-            id="err-confirmPassword"
-            aria-live="polite"
-          ></span>
-
-        </div>
-
-
-        <!-- Submit -->
-
-        <button
-          type="submit"
-          class="btn-primary"
-          id="submitBtn"
-        >
-
-          <span class="btn-label">
-            Create account
-          </span>
-
-          <span
-            class="btn-spinner"
-            hidden
-            aria-hidden="true"
-          ></span>
-
-        </button>
-
-
-        <!-- Server/Error Message -->
-
-        <p
-          class="banner"
-          id="formBanner"
-          hidden
-          aria-live="polite"
-        ></p>
-
-      </form>
-
-
-      <p class="footnote">
-        Already have an account?
-        <a href="#">
-          Log in
-        </a>
-      </p>
-
     </section>
-
-
-
-    <!-- =====================================================
-         SUCCESS CARD
-         ===================================================== -->
-
-    <section
-      class="card"
-      id="successCard"
-      hidden
-    >
-
-      <div class="result-icon success">
-        ✓
-      </div>
-
-      <h2>
-        Check your inbox
-      </h2>
-
-      <p class="sub">
-
-        We've sent a verification link to
-
-        <strong id="sentToEmail">
-          your email
-        </strong>.
-
-        Click the link to activate your account.
-
-        <br><br>
-
-        The verification link expires in
-        <strong>30 minutes</strong>.
-
-      </p>
-
-
-      <a
-        href="verify.html"
-        class="btn-ghost"
-      >
-        Didn't get it? Resend email
-      </a>
-
-    </section>
-
   </main>
 
-
-  <!-- JavaScript -->
-
   <script src="script.js"></script>
-
+  <script>
+    document.getElementById("ticketNumber").textContent =
+      String(Math.floor(100000 + Math.random() * 900000)).slice(0, 6);
+  </script>
 </body>
 </html>
